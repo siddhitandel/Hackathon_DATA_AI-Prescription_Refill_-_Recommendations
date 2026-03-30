@@ -1,0 +1,8 @@
+PHARMACY2U - CHALLENGE A: LATE REFILL RISK PREDICTION
+======================================================================
+
+PR-AUC Score: 0.842
+ROC-AUC Score: 0.525
+
+Test set size: 46
+High-risk patients (score >0.7): 46
