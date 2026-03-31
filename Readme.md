@@ -140,7 +140,13 @@ npm run dev
 
 ### React app Screenshots
 
-![alt text](./assets/image.png)
+![alt text](./assets/image1.png)
+![alt text](./assets/image2.png)
+![alt text](./assets/image3.png)
+![alt text](./assets/image4.png)
+![alt text](./assets/image5.png)
+![alt text](./assets/image6.png)
+![alt text](./assets/imag7.png)
 
 ## Team
 - Umar Khan 
