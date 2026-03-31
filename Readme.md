@@ -10,29 +10,90 @@ Predicts which Medicare patients are at risk of late prescription refills using 
 ## Repository Structure
 
 ```
-├── hackathon_pipeline.ipynb   # Full ML pipeline (data prep → model → evaluation)
-├── backend/
-│   ├── app.py                 # Flask API serving risk scores & patient data
-│   ├── requirements.txt
-│   └── data/
-│       └── final_delivery_data.csv   # Model output: risk scores + actions
-├── streamlit/
-│   ├── dashboard.py           # Interactive analytics dashboard
-│   └── requirements.txt
+├──    
+├── pharmacy2u/
+│   ├── hackathon_pipeline.ipynb                # Full ML pipeline (data prep → model → evaluation)
+│   ├── final_delivery_data.csv
+│       
 ├── frontend/                  # React UI (optional, requires npm)
 │   ├── src/
 │   ├── package.json
-│   └── vite.config.ts
+│   ├── vite.config.ts
+│
+├── Pharmacy2u_ppt.pptx
 └── README.md
 ```
 
-## Quick Start — Reproduce Our Results
 
-### Prerequisites
 
-- Python 3.10+
-- pip
+# 💊 AI Prescription Refill Recommendations
 
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)
+
+Welcome to the AI Prescription Refill Recommendations project! This repository contains a full-stack solution designed to analyze patient data and provide smart prescription refill recommendations using Machine Learning and a modern web interface.
+
+---
+
+## ⚙️ Prerequisites
+
+Make sure you have the following installed on your machine before setting up the project:
+* [Node.js](https://nodejs.org/)
+* [Python 3.8+](https://www.python.org/downloads/)
+* [Git](https://git-scm.com/)
+
+---
+
+## 🚀 Installation & Setup
+
+Follow these steps to get the project running on your local machine.
+
+### 1. Clone the Repository
+```bash
+git clone (https://github.com/siddhitandel/Hackathon_DATA_AI-Prescription_Refill_-_Recommendations.git)
+cd Hackathon_DATA_AI-Prescription_Refill_-_Recommendations
+
+```
+### 1. Clone the Repository
+```bash
+cd pharmacy2u
+```
+# Create a virtual environment
+```bash
+python -m venv venv
+```
+# Activate the virtual environment
+# Windows:
+```bash
+venv\Scripts\activate
+```
+# Mac/Linux:
+```bash
+source venv/bin/activate
+```
+
+
+# Install Jupyter and required data science packages
+```bash
+pip install jupyter pandas numpy scikit-learn
+```
+# Launch Jupyter Notebook
+```bash
+jupyter notebook
+```
+
+### cd frontend
+
+# Install Node modules
+```bash
+npm install
+```
+# Start the development server
+```bash
+npm start
+```
 ### 1. Run the ML Pipeline
 
 ```bash
