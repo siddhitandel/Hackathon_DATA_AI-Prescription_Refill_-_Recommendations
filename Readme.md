@@ -127,17 +127,20 @@ npm run dev
 
 | Step | Detail |
 |------|--------|
-| **Label** | Late = next fill > 7 days after expected run-out (`SRVC_DT + DAYS_SUPLY_NUM`) |
+| **Label** | Late = next fill > 7 days/ 14 days after expected run-out (`SRVC_DT + DAYS_SUPLY_NUM`) |
 | **Censoring** | Last fill per patient dropped (no future fill to evaluate) |
 | **Features** | Age, Condition_Count, Out_Of_Pocket_Ratio, Was_Late_Last_Time, Drug_Load, Avg_Past_Gap, Was_Hospitalized |
 | **Model** | XGBoost (scale_pos_weight=13) vs Logistic Regression baseline |
-| **Validation** | Time-based split (train on pre-cutoff, test on post-cutoff) |
+| **Validation** | Time-based split (train on 2008 and 2009, test on 2010) |
 | **Metric** | PR-AUC (primary), ROC-AUC, calibration check |
 
 ## Output Files
 
 - `final_delivery_data.csv` — 2,428 records with risk scores, predicted next drug, and recommended clinical actions
-- Streamlit dashboard screenshots (referenced in presentation)
+
+### React app Screenshots
+
+![alt text](./assets/image.png)
 
 ## Team
 - Umar Khan 
