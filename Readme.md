@@ -1,3 +1,58 @@
+# DATA-AI-Hackathon-Track-1
+Pharamcy2U Challenge for the Data&amp;AI Hackathon, 30-31 March 2026, University of Leeds
+# Hackathon Track 1: Prescription Refill Risk & Recommendations
+
+**Led by Pharmacy2U**
+
+## Dataset
+
+**CMS DE-SynPUF — Prescription Drug Events (PDE), Sample 1 (2008–2010)**
+
+Fully synthetic, Part D-style prescription event data designed for training and software development.
+
+| Resource | Link |
+|----------|------|
+| CMS Sample 1 page (file list) | https://www.cms.gov/data-research/statistics-trends-and-reports/medicare-claims-synthetic-public-use-files/cms-2008-2010-data-entrepreneurs-synthetic-public-use-file-de-synpuf/de10-sample-1 |
+| **Direct PDE ZIP (primary file)** | https://downloads.cms.gov/files/DE1_0_2008_to_2010_Prescription_Drug_Events_Sample_1.zip |
+| DE 1.0 Codebook (columns) | https://www.cms.gov/files/document/de-10-codebook.pdf-0 |
+| Optional: 2010 Beneficiary Summary | https://www.cms.gov/sites/default/files/2020-09/DE1_0_2010_Beneficiary_Summary_File_Sample_1.zip |
+| Backup (if blocked): AWS OMOP mirror | https://registry.opendata.aws/cmsdesynpuf-omop/ |
+
+**Download tip**: if clicking does nothing, paste the "Direct PDE ZIP" URL into your browser address bar (or use `curl -L -O <URL>`).
+
+### Key columns in the PDE file
+
+| Column | Meaning |
+|--------|---------|
+| `DESYNPUF_ID` | Pseudonymised patient/beneficiary identifier |
+| `SRVC_DT` | Prescription fill/service date |
+| `PROD_SRVC_ID` | NDC-11 drug product code (the dispensed item) |
+| `DAYS_SUPLY_NUM` | Days of supply (expected duration of the fill) |
+| `QTY_DSPNSD_NUM` | Quantity dispensed |
+| `PTNT_PAY_AMT` | Patient pay amount (cost signal) |
+| `TOT_RX_CST_AMT` | Total drug cost (cost signal) |
+
+### Quick glossary
+
+- **NDC-11**: an 11-digit National Drug Code (product identifier for a dispensed medicine)
+- **Days of supply**: how long the dispensed quantity is expected to last (e.g., 28/30/90 days)
+- **Expected run-out date**: `SRVC_DT + DAYS_SUPLY_NUM`
+- **Late refill**: the next fill happens after run-out (often with a grace window like +7 or +14 days)
+
+---
+
+## Challenge We Chose
+
+### Challenge A — Late refill risk
+
+**Goal**: predict which patient-drug pairs are likely to refill late next time, and produce a usable risk score.
+
+**Label guidance (minimum)**: expected run-out = `SRVC_DT + DAYS_SUPLY_NUM`. Link fills using `PROD_SRVC_ID` and label "late" if the next fill occurs after a grace window (e.g., +7 or +14 days). You can use any PDE columns as features, as long as they are available before prediction time.
+
+- **Features**: refill gap stats, early refills/stockpiling, cadence stability, cost/quantity patterns, polypharmacy proxies
+- **Validation**: time-based split to avoid leakage; handle censoring (last fill has no next fill)
+- **Metric**: PR-AUC + quick calibration check
+- **Demo**: patient timeline for 1-2 drugs + risk score + top drivers
 
 ---
 
