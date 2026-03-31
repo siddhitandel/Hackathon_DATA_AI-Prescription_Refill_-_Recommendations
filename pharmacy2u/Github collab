@@ -1,0 +1,174 @@
+# 🚀 Git Collaboration Guide (Fork Workflow)
+
+This guide explains how to collaborate on a GitHub repository using **forks, branches, and pull requests**.
+
+---
+
+## 🧠 Scenario
+
+* One person owns the **main repository (origin)**
+* Contributors **fork** the repo
+* Work is done via **branches + pull requests (PRs)**
+
+---
+
+## 📥 STEP 1: Clone Your Fork
+
+Clone YOUR fork (not the original repo):
+
+```bash
+git clone https://github.com/<your-username>/<repo-name>.git
+cd <repo-name>
+```
+
+---
+
+## 🔗 STEP 2: Add Upstream (Original Repo)
+
+This keeps your fork in sync with the main repo.
+
+```bash
+git remote add upstream https://github.com/<owner-username>/<repo-name>.git
+```
+
+Verify:
+
+```bash
+git remote -v
+```
+
+You should see:
+
+* origin → your fork
+* upstream → original repo
+
+---
+
+## 🌱 STEP 3: Create a Branch
+
+Never work on `main` directly.
+
+```bash
+git checkout -b feature-branch-name
+```
+
+---
+
+## ✍️ STEP 4: Make Changes & Commit
+
+```bash
+git add .
+git commit -m "Describe your changes"
+```
+
+---
+
+## ⬆️ STEP 5: Push to Your Fork
+
+```bash
+git push origin feature-branch-name
+```
+
+---
+
+## 🔁 STEP 6: Create Pull Request (PR)
+
+On GitHub:
+
+* Go to your fork
+* Click **Compare & Pull Request**
+* Base repo: original repo
+* Head repo: your fork
+
+Submit PR → Owner reviews → Merge
+
+---
+
+## 🔄 STEP 7: Sync with Latest Changes
+
+After PR is merged (or before starting new work):
+
+```bash
+git checkout main
+git pull upstream main
+```
+
+---
+
+## 🔁 STEP 8: Keep Your Fork Updated
+
+```bash
+git checkout main
+git fetch upstream
+git merge upstream/main
+git push origin main
+```
+
+---
+
+## ⚡ OPTIONAL: Rebase (Cleaner History)
+
+```bash
+git fetch upstream
+git rebase upstream/main
+```
+
+---
+
+## 🧑‍🤝‍🧑 Alternative (Simpler Way)
+
+Instead of forks, the owner can add collaborators.
+
+Steps:
+
+1. Repo Settings → Collaborators → Add user
+2. Contributor can directly clone:
+
+```bash
+git clone https://github.com/<owner-username>/<repo-name>.git
+```
+
+3. Work normally with branches + PRs
+
+---
+
+## ❌ Common Mistakes
+
+* Working directly on `main`
+* Not syncing with upstream
+* Forgetting to create a branch
+* Force pushing without understanding
+
+---
+
+## ✅ Best Practice Workflow
+
+1. Fork repo
+2. Clone fork
+3. Add upstream
+4. Create branch
+5. Commit changes
+6. Push branch
+7. Create PR
+8. Sync repo
+
+---
+
+## 🎯 One-Line Summary
+
+```
+Fork → Clone → Add upstream → Branch → Commit → Push → PR → Sync
+```
+
+---
+
+## 💡 Pro Tips
+
+* Use clear branch names (e.g., `feature/login`, `fix/navbar`)
+* Write meaningful commit messages
+* Pull latest changes before starting work
+* Keep PRs small and focused
+
+---
+
+Happy Coding 🚀
