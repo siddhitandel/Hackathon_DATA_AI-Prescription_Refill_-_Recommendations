@@ -100,46 +100,27 @@ npm start
 pip install pandas scikit-learn xgboost matplotlib seaborn
 jupyter notebook hackathon_pipeline.ipynb
 ```
+### Dataset
 
-Run all cells in order. This will:
-- Load and clean the CMS prescription + beneficiary data
-- Engineer features (Age, Condition_Count, Drug_Load, Avg_Past_Gap, etc.)
-- Train XGBoost with time-based validation
-- Output `final_delivery_data.csv` with risk scores and next-best actions
-
-**Input data**: Place the CMS DE-SynPUF files in a `Data/` folder:
+**Input data**: Place the CMS DE-SynPUF files in a `Data/` folder (can be downloaded from [Dataset link](https://drive.google.com/drive/folders/171JntroqAmKF4i7XNsp-FHyYiBzeJHi7?usp=sharing)) :
 - `DE1_0_2008_to_2010_Prescription_Drug_Events_Sample_1.csv`
 - `DE1_0_2008_Beneficiary_Summary_File_Sample_1.csv`
 - `DE1_0_2009_Beneficiary_Summary_File_Sample_1.csv`
 - `DE1_0_2010_Beneficiary_Summary_File_Sample_1.csv`
 - Inpatient claims file (any `*Inpatient*` CSV in `Data/`)
 
-### 2. Run the Streamlit Dashboard
+**Merged Data** :
+- pharmacy2u/final_delivery_data.csv (can be downloaded from [Dataset link](https://drive.google.com/drive/folders/171JntroqAmKF4i7XNsp-FHyYiBzeJHi7?usp=sharing))
 
-```bash
-cd streamlit
-pip install -r requirements.txt
-streamlit run dashboard.py
-```
-
-Opens at `http://localhost:8501`. Provides interactive filters, risk distribution charts, and patient lookup.
 
 ### 3. Run the Flask API + React Frontend (Optional)
 
-**Terminal 1 — API:**
-```bash
-cd backend
-pip install -r requirements.txt
-python app.py
-# Runs on http://localhost:5000
-```
-
-**Terminal 2 — Frontend:**
+**Terminal :**
 ```bash
 cd frontend
 npm install
 npm run dev
-# Runs on http://localhost:5173
+# Runs on http://localhost:8081
 ```
 
 ## Methodology Summary
